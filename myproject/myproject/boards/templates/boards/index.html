@@ -1,0 +1,11 @@
+{% if context %}
+    <ul>
+    {% for board in context %}
+        <li><a href="/board/{{ board.id }}/">{{ board.name }}</a></li>
+        <li>{{board.description}}</li>
+        <br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

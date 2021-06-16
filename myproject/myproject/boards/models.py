@@ -59,6 +59,8 @@ class AuthUser(models.Model):
     class Meta:
         managed = False
         db_table = 'auth_user'
+        verbose_name = '用户'
+        verbose_name_plural = '用户'
 
     def __str__(self):
         return self.username
@@ -144,6 +146,8 @@ class TBoard(models.Model):
     class Meta:
         managed = False
         db_table = 't_board'
+        verbose_name = '板块'
+        verbose_name_plural = '板块'
 
     def __str__(self):
         return self.name
@@ -162,6 +166,8 @@ class TConstant(models.Model):
     class Meta:
         managed = False
         db_table = 't_constant'
+        verbose_name = '配置常量'
+        verbose_name_plural = '配置常量'
 
     def __str__(self):
         return self.param_name
@@ -180,6 +186,8 @@ class TPost(models.Model):
     class Meta:
         managed = False
         db_table = 't_post'
+        verbose_name = '博客'
+        verbose_name_plural = '博客'
 
     def __str__(self):
         return self.message
@@ -188,7 +196,7 @@ class TPost(models.Model):
 class TTopic(models.Model):
     id = models.BigAutoField(primary_key=True)
     subject = models.CharField(max_length=255)
-    last_updated = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
     create_time = models.DateTimeField(auto_now_add=True)
     modify_time = models.DateTimeField(blank=True, null=True)
     board = models.ForeignKey(to=TBoard, on_delete=models.CASCADE, related_name='topics')
@@ -197,6 +205,8 @@ class TTopic(models.Model):
     class Meta:
         managed = False
         db_table = 't_topic'
+        verbose_name = '主题'
+        verbose_name_plural = '主题'
 
     def __str__(self):
         return self.subject
