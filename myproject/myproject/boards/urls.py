@@ -3,6 +3,7 @@ from django.urls import path
 
 from .views import *
 
+app_name = 'boards'
 urlpatterns = [
     url(r'^$', view=index, name='index'),
     path('<int:question_id>/', view=detail, name='detail'),

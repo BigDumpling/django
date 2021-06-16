@@ -2,6 +2,7 @@
     <ul>
     {% for board in context %}
         <li><a href="/board/{{ board.id }}/">{{ board.name }}</a></li>
+        <li><a href="{% url 'boards:detail' board.id %}">{{ board.name }}</a></li>
         <li>{{board.description}}</li>
         <br>
     {% endfor %}
