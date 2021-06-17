@@ -138,7 +138,7 @@ class DjangoSession(models.Model):
 
 class TBoard(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(unique=True, max_length=30)
+    name = models.CharField(unique=True, max_length=30, verbose_name='名称')
     description = models.CharField(max_length=100)
     create_time = models.DateTimeField(auto_now_add=True)
     modify_time = models.DateTimeField(blank=True, null=True)

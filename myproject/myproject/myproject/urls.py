@@ -21,3 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('board/', include('boards.urls'))
 ]
+
+# 不能放到应用的 urls.py文件里
+handler404 = 'myproject.views.response_error_404_handler'
