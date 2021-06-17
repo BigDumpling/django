@@ -22,13 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w%#t@uw6_t&$rppybc^r)^574mt*!vl3w^aa_jmdmu@!06uf-m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -64,6 +65,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'django.templatetags.static'
+            ],
         },
     },
 ]
@@ -78,7 +82,6 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'demo',
@@ -87,9 +90,7 @@ DATABASES = {
         'HOST': 'rd-ligq-2021.mysql.rds.aliyuncs.com',
         'PORT': '3306',
         'ATOMIC_REQUESTS': True,
-        'OPTIONS': {
-
-        }
+        'OPTIONS': {}
     }
 }
 
@@ -130,8 +131,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 生产环境，静态文件放到单独目录
+# python3 manage.py collectstatic
+# STATIC_ROOT = '/var/www/staticroot/'
+
+
+# ---------------- Simple-ui 配置
+# 指定simpleui默认的主题,指定一个文件名，相对路径就从simpleui的theme目录读取
+SIMPLEUI_DEFAULT_THEME = 'admin.lte.css'
+
+# 不让simpleui 不要收集相关信息
+
+SIMPLEUI_ANALYSIS = False
+
+# js采用离线的,默认为联网的
+SIMPLEUI_STATIC_OFFLINE = True

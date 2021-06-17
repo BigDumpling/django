@@ -141,7 +141,7 @@ class TBoard(models.Model):
     name = models.CharField(unique=True, max_length=30, verbose_name='名称')
     description = models.CharField(max_length=100)
     create_time = models.DateTimeField(auto_now_add=True)
-    modify_time = models.DateTimeField(blank=True, null=True)
+    modify_time = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     class Meta:
         managed = False
@@ -161,7 +161,7 @@ class TConstant(models.Model):
     param_value = models.CharField(max_length=256)
     remark = models.CharField(max_length=256)
     create_time = models.DateTimeField(auto_now_add=True)
-    modify_time = models.DateTimeField(blank=True, null=True)
+    modify_time = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     class Meta:
         managed = False
@@ -181,7 +181,7 @@ class TPost(models.Model):
     topic = models.ForeignKey(to='TTopic', on_delete=models.CASCADE, related_name='topics')
     updated_by = models.ForeignKey(to=AuthUser, on_delete=models.CASCADE, related_name='post_modify', blank=True,
                                    null=True)
-    modify_time = models.DateTimeField(blank=True, null=True)
+    modify_time = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     class Meta:
         managed = False
@@ -198,7 +198,7 @@ class TTopic(models.Model):
     subject = models.CharField(max_length=255)
     last_updated = models.DateTimeField(auto_now=True)
     create_time = models.DateTimeField(auto_now_add=True)
-    modify_time = models.DateTimeField(blank=True, null=True)
+    modify_time = models.DateTimeField(blank=True, null=True, auto_now=True)
     board = models.ForeignKey(to=TBoard, on_delete=models.CASCADE, related_name='topics')
     starter = models.ForeignKey(to=AuthUser, on_delete=models.CASCADE, related_name='topics')
 
