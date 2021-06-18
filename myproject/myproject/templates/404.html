@@ -1,2 +1,12 @@
-<h1>404了，你个 low bee！</h1>
-<h2>彩笔，这都能404？</h2>
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block content %}
+
+<h2>{% trans 'Page not found' %}</h2>
+
+<p>{% trans "We're sorry, but the requested page could not be found." %}</p>
+
+{% endblock %}

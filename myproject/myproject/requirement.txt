@@ -1,0 +1,4 @@
+pymysql==1.0.2
+cryptography==3.4.7
+Django==3.1.9
+django-simpleui==2021.6.2

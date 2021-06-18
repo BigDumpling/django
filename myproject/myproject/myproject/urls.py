@@ -13,14 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
 from django.urls import include
+from django.urls import path
+
+admin.site.site_title = '管理后台'
+admin.site.site_header = '博客 管理后台'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('board/', include('boards.urls'))
-]
+                  path('admin/', admin.site.urls),
+                  path('board/', include('boards.urls'))
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # 不能放到应用的 urls.py文件里
 handler404 = 'myproject.views.response_error_404_handler'

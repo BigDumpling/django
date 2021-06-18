@@ -131,9 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -144,14 +144,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # python3 manage.py collectstatic
 # STATIC_ROOT = '/var/www/staticroot/'
 
-
-# ---------------- Simple-ui 配置
-# 指定simpleui默认的主题,指定一个文件名，相对路径就从simpleui的theme目录读取
-SIMPLEUI_DEFAULT_THEME = 'admin.lte.css'
-
-# 不让simpleui 不要收集相关信息
-
+#
+# # ---------------- Simple-ui 配置
+# # 指定simpleui默认的主题,指定一个文件名，相对路径就从simpleui的theme目录读取
+# SIMPLEUI_DEFAULT_THEME = 'ant.design.css'
+#
+# # 不让simpleui 不要收集相关信息
+# SIMPLEUI_ANALYSIS = False
+#
+# # js采用离线的,默认为联网的
+# SIMPLEUI_STATIC_OFFLINE = True
+# SIMPLEUI_DEFAULT_ICON = False
+#
+# 隐藏右侧SimpleUI广告链接和使用分析
+SIMPLEUI_HOME_INFO = False
 SIMPLEUI_ANALYSIS = False
 
-# js采用离线的,默认为联网的
-SIMPLEUI_STATIC_OFFLINE = True
+# SIMPLEUI_CONFIG = {
+#     'system_keep': True,
+#     # 'menu_display': ['Simpleui', '测试', '权限认证', '动态菜单测试'],      # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
+#     'dynamic': True,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
+#     'menus': [
+#         {
+#             'name': '可视化',
+#             'icon': 'fa-fw fa fa-leaf',
+#             'models': [{
+#                 'name': '文章报表',
+#                 'icon': 'far fa-surprise',
+#                 'url': 'https://www.baidu.com'
+#             }]
+#         },
+#     ]
+# }
